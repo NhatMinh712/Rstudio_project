@@ -5,7 +5,7 @@ skimr::skim(class97$height)
 summary(class97$height)
 
 library(dplyr)
-> class97 %>%
+class97 %>%
   +     count(height)
 
 library(tidyverse)
