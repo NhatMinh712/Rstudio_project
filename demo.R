@@ -15,3 +15,4 @@ x <- 1:n
 set.seed(6)
 options(width = 72) # render output within width of the slide
 sample(x)
+#dwqdwdq
