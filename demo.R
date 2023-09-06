@@ -10,9 +10,6 @@ class97 %>%
 
 library(tidyverse)
 ggplot() + geom_histogram(data = class, aes(x = height))
-
-
-
 n <- 158
 x <- 1:n
 set.seed(6)
