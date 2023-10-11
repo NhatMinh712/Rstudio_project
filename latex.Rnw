@@ -1,0 +1,71 @@
+\documentclass[11pt]{article}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\section*{Question 1}
+\subsection*{
+\begin{itemize}
+  \item hi
+  \item hola
+\end{itemize}
+}
+\subsection*{
+\begin{enumerate}
+  \item top 1
+  \item top 2
+  \item top 3
+  \item top 4
+  \item top 5
+  \item top 6
+  \item top 7
+  \item top 8
+  \item top 9
+  \item top 10
+\end{enumerate}
+}
+\section*{Question 2}
+
+
+<<>>=
+set.seed(10)
+library(tidyverse)
+# Create data sampling from std norm distribution
+n <- 100
+n_sim <- 1000
+x0 <- rnorm(n = n * n_sim, mean = 0, sd = 1)
+x <- as_tibble(matrix(x0, nrow = n, ncol = n_sim),
+.name_repair = "universal"
+)
+# Compute 1000 (n_sim) sample means
+mu <- x %>%
+map_dbl(mean)
+# Estimate the main parameters (mean and standard deviation) of the distribution of the sample mean
+mu_mu <- mean(mu)
+sd_mu <- sd(mu)
+# Plot the histogram to estimate the distribution of the sample mean and the expected
+density distribution
+ggplot(tibble(mu = mu), aes(x = mu)) +
+geom_histogram(aes(y = ..density..)) +
+ggtitle("Histogram of sample means and expected distribution") +
+xlab("mu") +
+ylab("density") +
+scale_colour_discrete(name = "density") +
+geom_function(aes(colour = "normal"),
+fun = dnorm,
+args = list(mean = mu_mu, sd = sd_mu)
+)
+
+@
+
+
+\section*{Question 3}
+\section*{Question 4}
+\section*{Question 5}
+\section*{Question 6}
+\section*{Question 7}
+\section*{Question 8}
+
+
+
+
+\end{document}
